@@ -1,20 +1,20 @@
-﻿Build started 27.1.2016 13:50:52.
-     1>Project "C:\Users\PyryKos\Desktop\peliohjelmHarj\MyGaem\MyGaem\MyGaem.vcxproj" on node 2 (Build target(s)).
+﻿Build started 27.1.2016 16:47:50.
+     1>Project "C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\MyGaem\MyGaem.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\PyryKos\Desktop\peliohjelmHarj\MyGaem\\..\yam2d\engine\external /IC:\Users\PyryKos\Desktop\peliohjelmHarj\MyGaem\\..\yam2d\engine\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MainMenuState.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\\..\yam2d\engine\external /IC:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\\..\yam2d\engine\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MainMenuState.cpp
          MainMenuState.cpp
-     1>c:\users\pyrykos\desktop\peliohjelmharj\yam2d\engine\include\es_assert.h(32): warning C4005: 'assert' : macro redefinition
+     1>c:\users\pyrykos\desktop\peliohjelmharj\peliohj\yam2d\engine\include\es_assert.h(32): warning C4005: 'assert' : macro redefinition
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\assert.h(41) : see previous definition of 'assert'
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\PyryKos\Desktop\peliohjelmHarj\MyGaem\Debug\MyGaem.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\PyryKos\Desktop\peliohjelmHarj\MyGaem\\..\yam2d\engine\lib\win32 libEGL.lib libgles_cm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\PyryKos\Desktop\peliohjelmHarj\MyGaem\Debug\MyGaem.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\PyryKos\Desktop\peliohjelmHarj\MyGaem\Debug\MyGaem.lib" /MACHINE:X86 Debug\GameApp.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\Debug\MyGaem.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\\..\yam2d\engine\lib\win32 libEGL.lib libgles_cm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\Debug\MyGaem.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\Debug\MyGaem.lib" /MACHINE:X86 Debug\GameApp.obj
          Debug\GameState.obj
          Debug\main.obj
          Debug\MainMenuState.obj
          Debug\SplashScreenState.obj
-         C:\Users\PyryKos\Desktop\peliohjelmHarj\yam2d\engine\lib\win32_vs13\Debug\yam2d.lib
-         MyGaem.vcxproj -> C:\Users\PyryKos\Desktop\peliohjelmHarj\MyGaem\Debug\MyGaem.exe
-     1>Done Building Project "C:\Users\PyryKos\Desktop\peliohjelmHarj\MyGaem\MyGaem\MyGaem.vcxproj" (Build target(s)).
+         C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\yam2d\engine\lib\win32_vs13\Debug\yam2d.lib
+         MyGaem.vcxproj -> C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\Debug\MyGaem.exe
+     1>Done Building Project "C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\MyGaem\MyGaem.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.25
+Time Elapsed 00:00:01.03

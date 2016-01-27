@@ -88,6 +88,9 @@ MainMenuState::MainMenuState(GameApp* gameApp)
     objectLayer->addGameObject(startGameObject);
     startGameObject->setPosition(yam2d::vec2(0, 2.0f));
 
+	exitGameObject->setName("exit");
+	startGameObject->setName("start");
+
 }
 
 MainMenuState::~MainMenuState()
@@ -104,25 +107,28 @@ bool MainMenuState::update(yam2d::ESContext *context, float deltaTime)
     
 	yam2d::GameObject* pickedObject = m_map->getLayer("Objects")->pick(mouseInMapCoordinates);
 
-	if (pickedObject != 0)
+	
+	std::string start = "start";
+	std::string exit = "exit";
+	if (pickedObject != nullptr)
 	{
-		std::cout << pickedObject->getName().c_str();
-	}
-	else
-	{
+		std::string test1 = pickedObject->getName();
 
+		if (test1.compare(start) == 0)
+		{
+			//getApp()->setState(new GameRunningState(getApp()));
+			//return true;
+			yam2d::esLogMessage("Object %s picked!", pickedObject->getName().c_str());
+			return true;
+		}
+		else if (test1.compare(exit) == 0)
+		{
+			yam2d::esLogMessage("Object %s picked!", pickedObject->getName().c_str());
+			return true;
+		}
 	}
 
-	/*if (pickedObject->getName().c_str() == "startGameObject")
-	{
-		getApp()->setState(new GameRunningState(getApp()));
-		return true;
-	}
-	else if (pickedObject->getName().c_str() == "exitGameObject")
-	{
-		
-	}
-    */
+    
     m_map->update(deltaTime);
 
     return true;
