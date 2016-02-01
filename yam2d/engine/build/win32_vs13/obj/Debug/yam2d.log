@@ -1,9 +1,9 @@
-﻿Build started 27.1.2016 16:14:07.
-     1>Project "C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\yam2d\engine\build\win32_vs13\yam2d.vcxproj" on node 2 (Build target(s)).
+﻿Build started 1.2.2016 22.26.17.
+     1>Project "C:\Users\Pyry\Desktop\peliohj\yam2d\engine\build\win32_vs13\yam2d.vcxproj" on node 2 (Build target(s)).
      1>Lib:
-         yam2d.vcxproj -> C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\yam2d\engine\build\win32_vs13\..\..\lib\win32_vs13\Debug\yam2d.lib
-     1>Done Building Project "C:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\yam2d\engine\build\win32_vs13\yam2d.vcxproj" (Build target(s)).
+         yam2d.vcxproj -> C:\Users\Pyry\Desktop\peliohj\yam2d\engine\build\win32_vs13\..\..\lib\win32_vs13\Debug\yam2d.lib
+     1>Done Building Project "C:\Users\Pyry\Desktop\peliohj\yam2d\engine\build\win32_vs13\yam2d.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.21
+Time Elapsed 00:00:00.28

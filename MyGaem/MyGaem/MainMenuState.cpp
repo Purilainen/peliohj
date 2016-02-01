@@ -80,14 +80,27 @@ MainMenuState::MainMenuState(GameApp* gameApp)
     m_map->addLayer(yam2d::Map::BACKGROUND0, backgroundLayer);
     m_map->addLayer(yam2d::Map::MAPLAYER0, objectLayer);
 
+    yam2d::GameObject* background = createSpriteGameObject("background.png", 1336.0f, 768.0f, false);
+    backgroundLayer->addGameObject(background);
+
+    yam2d::GameObject* exitGameObject = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 103.0f, 402.0f, 102.0f, true);
+    objectLayer->addGameObject(exitGameObject);
+    exitGameObject->setPosition(yam2d::vec2(3.0f, 1.0f));
+    /*
     yam2d::GameObject* exitGameObject = createSpriteGameObject("exitButton.png", 64.0f, 64.0f, true);
     objectLayer->addGameObject(exitGameObject);
     exitGameObject->setPosition(yam2d::vec2(0, 0));
+    */
 
+    yam2d::GameObject* startGameObject = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 0, 402.0f, 102.0f, true);
+    objectLayer->addGameObject(startGameObject);
+    startGameObject->setPosition(yam2d::vec2(-1.0f, 1.0f));
+
+    /*
     yam2d::GameObject* startGameObject = createSpriteGameObject("startButton.png", 64.0f, 64.0f, true);
     objectLayer->addGameObject(startGameObject);
     startGameObject->setPosition(yam2d::vec2(0, 2.0f));
-
+    */
 	exitGameObject->setName("exit");
 	startGameObject->setName("start");
 
@@ -103,15 +116,18 @@ bool MainMenuState::update(yam2d::ESContext *context, float deltaTime)
 	float mouseY = float(yam2d::getMouseAxisY());
     count += deltaTime;
     
+    
+    yam2d::vec2 originSize = { 201.0f, 51.0f };
 	yam2d::vec2 mouseInMapCoordinates = m_map->screenToMapCoordinates(mouseX, mouseY);
     
 	yam2d::GameObject* pickedObject = m_map->getLayer("Objects")->pick(mouseInMapCoordinates);
-
-	
+    
 	std::string start = "start";
 	std::string exit = "exit";
 	if (pickedObject != nullptr)
 	{
+        yam2d::vec2 sizeEffect = { 300.0f, 75.0f };
+        
 		std::string test1 = pickedObject->getName();
 
 		if (test1.compare(start) == 0)
@@ -119,15 +135,23 @@ bool MainMenuState::update(yam2d::ESContext *context, float deltaTime)
 			//getApp()->setState(new GameRunningState(getApp()));
 			//return true;
 			yam2d::esLogMessage("Object %s picked!", pickedObject->getName().c_str());
-			return true;
+            pickedObject->setSize(sizeEffect);
+            return true;
 		}
-		else if (test1.compare(exit) == 0)
-		{
-			yam2d::esLogMessage("Object %s picked!", pickedObject->getName().c_str());
-			return true;
-		}
+        else if (test1.compare(exit) == 0)
+        {
+            yam2d::esLogMessage("Object %s picked!", pickedObject->getName().c_str());
+            pickedObject->setSize(sizeEffect);
+            return true;
+        }
 	}
-
+    else
+    {
+        m_map->findGameObjectByName("start")->setSize(originSize);
+        m_map->findGameObjectByName("exit")->setSize(originSize);
+        
+        return true;
+    }
     
     m_map->update(deltaTime);
 
