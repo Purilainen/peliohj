@@ -64,6 +64,9 @@ MainMenuState::MainMenuState(GameApp* gameApp)
     : GameState(gameApp)
 	, m_gameApp(gameApp)
 	, m_map(0)
+    , m_backGroundLayer(0)
+    , m_objectLayer(0)
+    , m_totalTime(0)
 	
 {
     yam2d::vec2 tileSize(64, 64);
@@ -83,14 +86,14 @@ MainMenuState::MainMenuState(GameApp* gameApp)
 
     // Creating start button game object
     // First image size, second clipStart X & Y, third clipSize
-    yam2d::Ref<yam2d::GameObject> start = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 0, 402.0f, 102.0f, true);
+    yam2d::Ref<yam2d::GameObject> start = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 0, 402, 102, true);
     m_objectLayer->addGameObject(start);
     start->setPosition(yam2d::vec2(-1.0f, 1.0f));
     start->setName("start");
 
     // Creating exit button game object
     // First image size, second clipStart X & Y, third clipSize
-    yam2d::Ref<yam2d::GameObject> exit = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 103.0f, 402.0f, 102.0f, true);
+    yam2d::Ref<yam2d::GameObject> exit = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 103.0f, 402, 102, true);
     m_objectLayer->addGameObject(exit);
     exit->setPosition(yam2d::vec2(3.0f, 1.0f));
     exit->setName("exit");
