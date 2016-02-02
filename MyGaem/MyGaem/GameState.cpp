@@ -13,7 +13,7 @@ GameState::~GameState()
 
 bool GameState::update(yam2d::ESContext *context, float deltaTime)
 {
-	//assert(m_gameApp != 0);
+	assert(m_gameApp != 0);
 	//If return false - esQuitApp
 	return true;
 };

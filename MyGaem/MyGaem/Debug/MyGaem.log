@@ -1,16 +1,11 @@
-﻿Build started 2.2.2016 19.27.55.
+﻿Build started 2.2.2016 19.38.33.
      1>Project "C:\Users\Pyry\Desktop\peliohj\MyGaem\MyGaem\MyGaem.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\\..\yam2d\engine\external /IC:\Users\PyryKos\Desktop\peliohjelmHarj\peliohj\MyGaem\\..\yam2d\engine\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameRunningState.cpp
-         GameRunningState.cpp
+         D:\Visual Studio\VC\bin\CL.exe /c /IC:\Users\Pyry\Desktop\peliohj\MyGaem\\..\yam2d\engine\external /IC:\Users\Pyry\Desktop\peliohj\MyGaem\\..\yam2d\engine\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameApp.cpp GameState.cpp
+         GameState.cpp
      1>c:\users\pyry\desktop\peliohj\yam2d\engine\include\es_assert.h(32): warning C4005: 'assert' : macro redefinition
                  d:\visual studio\vc\include\assert.h(41) : see previous definition of 'assert'
          GameApp.cpp
-     1>c:\users\pyry\desktop\peliohj\yam2d\engine\include\es_assert.h(32): warning C4005: 'assert' : macro redefinition
-                 d:\visual studio\vc\include\assert.h(41) : see previous definition of 'assert'
-         Generating Code...
-         Compiling...
-         GameState.cpp
      1>c:\users\pyry\desktop\peliohj\yam2d\engine\include\es_assert.h(32): warning C4005: 'assert' : macro redefinition
                  d:\visual studio\vc\include\assert.h(41) : see previous definition of 'assert'
          Generating Code...
@@ -27,4 +22,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.60
+Time Elapsed 00:00:02.05
