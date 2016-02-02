@@ -13,7 +13,7 @@ class GameApp : public yam2d::Object
 {
 public:
 	GameApp();
-	~GameApp();
+	virtual ~GameApp();
 
 	bool update(yam2d::ESContext *context, float deltaTime);
 	void render(yam2d::ESContext *context);

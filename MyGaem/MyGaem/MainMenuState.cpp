@@ -5,9 +5,9 @@
 yam2d::GameObject* MainMenuState::createSpriteGameObject(const std::string& bitmapFileName, float sizeX, float sizeY, bool isWhiteTransparentColor = false)
 {
     // Load texture to be used as texture for sprite.
-	yam2d::Texture* texture = new yam2d::Texture(bitmapFileName.c_str());
+	yam2d::Ref<yam2d::Texture> texture = new yam2d::Texture(bitmapFileName.c_str());
 
-    // If user wants to create texture which white coros is treated as atransparent color.
+    // If user wants to create texture which white colors is treated as a transparent color.
     if (isWhiteTransparentColor)
     {
         // Set white to transparent. Here color values are from 0 to 255 (RGB)
@@ -16,7 +16,7 @@ yam2d::GameObject* MainMenuState::createSpriteGameObject(const std::string& bitm
 
     // Create new sprite GameObject from texture.
 	yam2d::GameObject* gameObject = new yam2d::GameObject(0,0);
-	yam2d::SpriteComponent* sprite = new yam2d::SpriteComponent(gameObject, texture);
+	yam2d::Ref<yam2d::SpriteComponent> sprite = new yam2d::SpriteComponent(gameObject, texture);
 
     // Resize the sprite to be correct size
     gameObject->setSize(sizeX, sizeY);
@@ -28,9 +28,9 @@ yam2d::GameObject* MainMenuState::createSpriteGameObject(const std::string& bitm
 yam2d::GameObject* MainMenuState::createSpriteGameObject(const std::string& bitmapFileName, float sizeX, float sizeY, int clipStartX, int clipStartY, int clipSizeX, int clipSizeY, bool isWhiteTransparentColor = false)
 {
     // Load texture to be used as texture for sprite.
-	yam2d::Texture* texture = new yam2d::Texture(bitmapFileName.c_str());
+	yam2d::Ref<yam2d::Texture> texture = new yam2d::Texture(bitmapFileName.c_str());
 
-    // If user wants to create texture which white coros is treated as atransparent color.
+    // If user wants to create texture which white colors is treated as a transparent color.
     if (isWhiteTransparentColor)
     {
         // Set white to transparent. Here color values are from 0 to 255 (RGB)
@@ -39,7 +39,7 @@ yam2d::GameObject* MainMenuState::createSpriteGameObject(const std::string& bitm
 
     // Create new sprite GameObject from texture.
     yam2d::GameObject* gameObject = new yam2d::GameObject(0, 0);
-    yam2d::SpriteComponent* sprite = new yam2d::SpriteComponent(gameObject, texture);
+    yam2d::Ref<yam2d::SpriteComponent> sprite = new yam2d::SpriteComponent(gameObject, texture);
 
     // Resize the sprite to be correct size
     gameObject->setSize(sizeX, sizeY);
@@ -127,14 +127,14 @@ bool MainMenuState::update(yam2d::ESContext *context, float deltaTime)
 			//getApp()->setState(new GameRunningState(getApp()));
 			//return true;
 			yam2d::esLogMessage("Object %s picked!", pickedObject->getName().c_str());
-            if (m_totalTime <= 1.5f)
+            if (yam2d::getMouseButtonState(yam2d::MOUSE_LEFT) == 1)
             {
-                pickedObject->setSize(sizeEffect);
+                getApp()->setState(new GameRunningState(getApp()));
+                return true; 
             }
             else
             {
-                getApp()->setState(new GameRunningState(getApp()));
-                return true;
+                pickedObject->setSize(sizeEffect);
             }
             
             return true;
@@ -144,15 +144,15 @@ bool MainMenuState::update(yam2d::ESContext *context, float deltaTime)
             yam2d::esLogMessage("Object %s picked!", pickedObject->getName().c_str());
             
 
-            if (m_totalTime <= 1.5f)
-            {
-                pickedObject->setSize(sizeEffect);
-                return true;
-            }
-            else
+            if (yam2d::getMouseButtonState(yam2d::MOUSE_LEFT) == 1)
             {
                 //return false - quit app
                 return false;
+            }
+            else
+            {
+                pickedObject->setSize(sizeEffect);
+                return true; 
             }
             
             

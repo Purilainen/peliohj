@@ -10,12 +10,11 @@ GameApp::GameApp()
 
 GameApp::~GameApp()
 {
-	delete m_currentState;
 }
 
 bool GameApp::update(yam2d::ESContext *context, float deltaTime)
 {
-	assert(m_currentState != 0);
+	//assert(m_currentState != 0);
 
     if (m_currentState->update(context, deltaTime) == false)
     {

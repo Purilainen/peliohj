@@ -31,7 +31,7 @@ bool init(ESContext *esContext)
 // Deinitialize the game
 void deinit(ESContext *esContext)
 {
-
+    delete gameApp;
 }
 
 
