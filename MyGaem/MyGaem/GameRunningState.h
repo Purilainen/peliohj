@@ -3,10 +3,6 @@
 
 #include "GameState.h"
 #include "MainMenuState.h"
-#include <SpriteBatch.h>
-#include <SpriteSheet.h>
-#include <Text.h>
-#include <Texture.h>
 
 
 class GameRunningState :
@@ -17,13 +13,14 @@ public:
     virtual ~GameRunningState();
     virtual bool update(yam2d::ESContext *context, float deltaTime);
     virtual void render(yam2d::ESContext *context);
+    float getZoom();
+    void setZoom(float newZoom);
+
 private:
-    yam2d::Ref < yam2d::Sprite > m_sprite;
-    GameApp* m_gameApp;
-    float m_totalTime = 0;
-    yam2d::Ref<yam2d::SpriteBatchGroup> m_batch;
-    yam2d::Ref<yam2d::Texture> m_newTexture;
-    float count = 0;
+    GameApp* m_gameApp; /// < Dont use Ref here to avoid "issues"
+    yam2d::Ref<yam2d::TmxMap> m_tmap;
+    yam2d::Ref<yam2d::ComponentFactory> m_compfactory;
+    float m_zoom;
 };
 
 #endif
