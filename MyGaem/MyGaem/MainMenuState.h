@@ -23,9 +23,12 @@ public:
     yam2d::GameObject* createSpriteGameObject(const std::string& bitmapFileName, float sizeX, float sizeY, bool isWhiteTransparentColor);
     yam2d::GameObject* createSpriteGameObject(const std::string& bitmapFileName, float sizeX, float sizeY, int clipStartX, int clipStartY, int clipSizeX, int clipSizeY, bool isWhiteTransparentColor);
 private:
+    yam2d::Ref<yam2d::Layer> m_backGroundLayer, m_objectLayer;
 	yam2d::Ref<yam2d::Map> m_map;
     float count = 0;
+    float m_totalTime = 0;
 	GameApp* m_gameApp;
+    
 };
 
 #endif

@@ -17,7 +17,14 @@ bool GameApp::update(yam2d::ESContext *context, float deltaTime)
 {
 	assert(m_currentState != 0);
 
-	return m_currentState->update(context, deltaTime);
+    if (m_currentState->update(context, deltaTime) == false)
+    {
+        yam2d::esQuitApp(context);
+    }
+    else
+    {
+        return m_currentState->update(context, deltaTime);
+    }
 
 	return true;
 }

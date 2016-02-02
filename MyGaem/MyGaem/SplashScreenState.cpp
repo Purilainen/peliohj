@@ -28,7 +28,7 @@ bool SplashScreenState::update(yam2d::ESContext *context, float deltaTime)
 	count += deltaTime;
 	// Clear sprite before add new dynamic sprites.
 	m_batch->clear();
-	if (m_totalTime <= 1.0f)
+	if (m_totalTime <= 3.0f)
 	{
 		// Add sprite. Rotate it. Scale it.
 		m_batch->addSprite(m_newTexture, m_sprite, yam2d::vec2(0, 0), count * 2, yam2d::vec2(400, 300));

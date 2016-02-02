@@ -66,44 +66,35 @@ MainMenuState::MainMenuState(GameApp* gameApp)
 	, m_map(0)
 	
 {
-    //batch = new SpriteBatchGroup();
     yam2d::vec2 tileSize(64, 64);
-    //startButtonTexture = new yam2d::Texture("startButton.png");
-    //exitButtonTexture = new yam2d::Texture("exitButton.png");
 
     m_map = new yam2d::Map(tileSize.x, tileSize.y);
-    //map = m_map;
 
-    yam2d::Layer* backgroundLayer = new yam2d::Layer(m_map, "Background", 1.0f, true, false);
-    yam2d::Layer* objectLayer = new yam2d::Layer(m_map, "Objects", 1.0f, true, false);
+    
+    m_objectLayer = new yam2d::Layer(m_map, "Objects", 1.0f, true, false);
+    m_backGroundLayer = new yam2d::Layer(m_map, "Background", 1.0f, true, false);
 
-    m_map->addLayer(yam2d::Map::BACKGROUND0, backgroundLayer);
-    m_map->addLayer(yam2d::Map::MAPLAYER0, objectLayer);
+    m_map->addLayer(yam2d::Map::BACKGROUND0, m_backGroundLayer);
+    m_map->addLayer(yam2d::Map::MAPLAYER0, m_objectLayer);
 
-    yam2d::GameObject* background = createSpriteGameObject("background.png", 1336.0f, 768.0f, false);
-    backgroundLayer->addGameObject(background);
+    //Creating background gameObject - image, size, bool isWhiteTransparentColor
+    yam2d::Ref<yam2d::GameObject> background = createSpriteGameObject("background.png", 1336.0f, 768.0f, false);
+    m_backGroundLayer->addGameObject(background);
 
-    yam2d::GameObject* exitGameObject = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 103.0f, 402.0f, 102.0f, true);
-    objectLayer->addGameObject(exitGameObject);
-    exitGameObject->setPosition(yam2d::vec2(3.0f, 1.0f));
-    /*
-    yam2d::GameObject* exitGameObject = createSpriteGameObject("exitButton.png", 64.0f, 64.0f, true);
-    objectLayer->addGameObject(exitGameObject);
-    exitGameObject->setPosition(yam2d::vec2(0, 0));
-    */
+    // Creating start button game object
+    // First image size, second clipStart X & Y, third clipSize
+    yam2d::Ref<yam2d::GameObject> start = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 0, 402.0f, 102.0f, true);
+    m_objectLayer->addGameObject(start);
+    start->setPosition(yam2d::vec2(-1.0f, 1.0f));
+    start->setName("start");
 
-    yam2d::GameObject* startGameObject = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 0, 402.0f, 102.0f, true);
-    objectLayer->addGameObject(startGameObject);
-    startGameObject->setPosition(yam2d::vec2(-1.0f, 1.0f));
-
-    /*
-    yam2d::GameObject* startGameObject = createSpriteGameObject("startButton.png", 64.0f, 64.0f, true);
-    objectLayer->addGameObject(startGameObject);
-    startGameObject->setPosition(yam2d::vec2(0, 2.0f));
-    */
-	exitGameObject->setName("exit");
-	startGameObject->setName("start");
-
+    // Creating exit button game object
+    // First image size, second clipStart X & Y, third clipSize
+    yam2d::Ref<yam2d::GameObject> exit = createSpriteGameObject("buttons.png", 402.0f / 2, 102.0f / 2, 0, 103.0f, 402.0f, 102.0f, true);
+    m_objectLayer->addGameObject(exit);
+    exit->setPosition(yam2d::vec2(3.0f, 1.0f));
+    exit->setName("exit");
+    	
 }
 
 MainMenuState::~MainMenuState()
@@ -115,7 +106,7 @@ bool MainMenuState::update(yam2d::ESContext *context, float deltaTime)
 	float mouseX = float(yam2d::getMouseAxisX());
 	float mouseY = float(yam2d::getMouseAxisY());
     count += deltaTime;
-    
+    m_totalTime += deltaTime;
     
     yam2d::vec2 originSize = { 201.0f, 51.0f };
 	yam2d::vec2 mouseInMapCoordinates = m_map->screenToMapCoordinates(mouseX, mouseY);
@@ -132,24 +123,46 @@ bool MainMenuState::update(yam2d::ESContext *context, float deltaTime)
 
 		if (test1.compare(start) == 0)
 		{
+            
 			//getApp()->setState(new GameRunningState(getApp()));
 			//return true;
 			yam2d::esLogMessage("Object %s picked!", pickedObject->getName().c_str());
-            pickedObject->setSize(sizeEffect);
+            if (m_totalTime <= 1.5f)
+            {
+                pickedObject->setSize(sizeEffect);
+            }
+            else
+            {
+                getApp()->setState(new GameRunningState(getApp()));
+                return true;
+            }
+            
             return true;
 		}
         else if (test1.compare(exit) == 0)
         {
             yam2d::esLogMessage("Object %s picked!", pickedObject->getName().c_str());
-            pickedObject->setSize(sizeEffect);
-            return true;
+            
+
+            if (m_totalTime <= 1.5f)
+            {
+                pickedObject->setSize(sizeEffect);
+                return true;
+            }
+            else
+            {
+                //return false - quit app
+                return false;
+            }
+            
+            
         }
 	}
     else
     {
         m_map->findGameObjectByName("start")->setSize(originSize);
         m_map->findGameObjectByName("exit")->setSize(originSize);
-        
+        m_totalTime = 0;
         return true;
     }
     
