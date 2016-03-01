@@ -4,7 +4,7 @@
 #include "GameState.h"
 #include "MainMenuState.h"
 #include "MyGameComponentFactory.h"
-
+#include "PlayerController.h"
 
 class GameRunningState :
     public GameState
@@ -23,6 +23,7 @@ private:
     GameApp* m_gameApp; /// < Dont use Ref here to avoid "issues"
     yam2d::Ref<yam2d::TmxMap> m_tmap;
     yam2d::Ref<MyGameComponentFactory> m_compfactory;
+    yam2d::Ref<yam2d::GameObject> player;
     float m_zoom;
 };
 

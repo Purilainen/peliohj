@@ -21,6 +21,8 @@ GameRunningState::GameRunningState(GameApp* gameApp)
     {
         yam2d::esLogMessage("Could not load tile map");
     }
+
+    m_tmap->findGameObjectByName("PlayerPad")->getComponent<PlayerController>();
 }
 
 GameRunningState::~GameRunningState()
@@ -31,14 +33,17 @@ bool GameRunningState::update(yam2d::ESContext *context, float deltaTime)
 {
    //Set zoom via mouse wheel
     setZoom(getZoom() - yam2d::getMouseWheelDelta());
-
+    //std::string name;
     
+    
+    yam2d::vec2 pos = m_tmap->findGameObjectByName("PlayerPad")->getPosition();
 
     if (yam2d::getKeyState(yam2d::KEY_ESCAPE) == 1)
     {
         getApp()->setState(new MainMenuState(getApp()));
         return true;
     }
+
 
     m_tmap->update(deltaTime);
     return true;   

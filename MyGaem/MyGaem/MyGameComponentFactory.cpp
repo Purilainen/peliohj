@@ -22,12 +22,16 @@ yam2d::Entity* MyGameComponentFactory::createNewEntity(ComponentFactory* compone
     {
         yam2d::GameObject* gameObject = new yam2d::GameObject(parent, properties);
         gameObject->addComponent(componentFactory->createNewComponent("Tile", gameObject, properties));
+        PlayerController* pcontroller = new PlayerController(gameObject);
+        gameObject->addComponent(pcontroller);
         return gameObject;
     }
     else if ("Ball" == type)
     {
         yam2d::GameObject* gameObject = new yam2d::GameObject(parent, properties);
         gameObject->addComponent(componentFactory->createNewComponent("Tile", gameObject, properties));
+        BallController* bcontroller = new BallController(gameObject);
+        gameObject->addComponent(bcontroller);
         return gameObject;
     }
     else if ("Brick" == type)

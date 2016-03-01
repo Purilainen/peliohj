@@ -3,6 +3,8 @@
 
 #include "TileComponent.h"
 #include "Entity.h"
+#include "PlayerController.h"
+#include "BallController.h"
 
 class MyGameComponentFactory : public yam2d::DefaultComponentFactory
 {
