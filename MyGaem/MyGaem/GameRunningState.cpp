@@ -7,6 +7,8 @@ GameRunningState::GameRunningState(GameApp* gameApp)
     , m_compfactory(0)
     , m_tmap(0)
     , m_zoom(1.0f)
+    , bricks(0)
+    , walls(0)
 {
     m_compfactory = new MyGameComponentFactory();
     m_tmap = new yam2d::TmxMap();
@@ -22,7 +24,20 @@ GameRunningState::GameRunningState(GameApp* gameApp)
         yam2d::esLogMessage("Could not load tile map");
     }
 
-    m_tmap->findGameObjectByName("PlayerPad")->getComponent<PlayerController>();
+    //Copy data to make some cleaner code
+    player = m_tmap->findGameObjectByName("PlayerPad");
+    ball = m_tmap->findGameObjectByName("Ball");
+
+    bricks.reserve(m_tmap->getLayer("Objects")->getGameObjects().size());
+    bricks = m_tmap->getLayer("Brick")->getGameObjects();
+    walls.reserve(m_tmap->getLayer("StaticColliders")->getGameObjects().size());
+    walls = m_tmap->getLayer("StaticColliders")->getGameObjects();
+
+    //Bind player&ball to each other
+    player->getComponent<PlayerController>()->bindBall(ball);
+    ball->getComponent<BallController>()->bindPlayer(player);
+
+    yam2d::esLogMessage("Init done");
 }
 
 GameRunningState::~GameRunningState()
@@ -34,9 +49,33 @@ bool GameRunningState::update(yam2d::ESContext *context, float deltaTime)
    //Set zoom via mouse wheel
     setZoom(getZoom() - yam2d::getMouseWheelDelta());
     //std::string name;
-    
-    
-    yam2d::vec2 pos = m_tmap->findGameObjectByName("PlayerPad")->getPosition();
+
+    yam2d::vec2 pos = player->getPosition();
+
+    // -------------- COLLISIONS -------- START
+    //Collision with player
+    if (ball->collidesTo(player))
+    {
+        ball->getComponent<BallController>()->handleCollision(player);
+    }
+    //Collision with static colliders "Walls"
+    for (int i = 0; i < walls.size(); ++i)
+    {
+        if (ball->collidesTo(walls.at(i)))
+        {
+            ball->getComponent<BallController>()->handleCollision(walls.at(i));
+        }
+    }
+    //Brick collisions
+    for (int i = 0; i < bricks.size(); ++i)
+    {
+        if (ball->collidesTo(bricks.at(i)))
+        {
+            ball->getComponent<BallController>()->handleCollision(bricks.at(i));
+        }
+    }
+    // -------------- COLLISIONS -------- END
+
 
     if (yam2d::getKeyState(yam2d::KEY_ESCAPE) == 1)
     {

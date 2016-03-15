@@ -20,3 +20,4 @@ void PlayerController::update(float deltaTime)
     else if (yam2d::getKeyState(yam2d::KEY_RIGHT))
         getGameObject()->setPosition(getGameObject()->getPosition().x + playerSpeed, getGameObject()->getPosition().y);
 }
+

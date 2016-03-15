@@ -19,6 +19,7 @@ public:
     yam2d::GameObject* getGameObject() { return (yam2d::GameObject*)getOwner(); }
     const yam2d::GameObject* getGameObject() const { return (const yam2d::GameObject*)getOwner(); }
 
+    const yam2d::vec2 getVelocity(){ return velocity; }
 
 private:
     yam2d::GameObject* ball;

@@ -21,7 +21,7 @@
   <object id="23" name="Ball" type="Ball" gid="15" x="607.03" y="673" width="64" height="64"/>
   <object id="24" name="PlayerPad" type="PlayerPad" gid="23" x="576.03" y="762" width="128" height="64"/>
  </objectgroup>
- <objectgroup name="StaticObjects">
+ <objectgroup name="StaticColliders">
   <object id="3" name="Up" type="StaticCollider" x="-4" y="-8" width="1340" height="68"/>
   <object id="4" name="Left" type="StaticCollider" x="-22" y="-46" width="82" height="874"/>
   <object id="7" name="Right" type="StaticCollider" x="1214" y="-24" width="74" height="834"/>

@@ -23,7 +23,9 @@ private:
     GameApp* m_gameApp; /// < Dont use Ref here to avoid "issues"
     yam2d::Ref<yam2d::TmxMap> m_tmap;
     yam2d::Ref<MyGameComponentFactory> m_compfactory;
-    yam2d::Ref<yam2d::GameObject> player;
+    yam2d::Ref<yam2d::GameObject> player, ball;
+    std::vector<yam2d::Ref<yam2d::GameObject>> bricks;
+    std::vector<yam2d::Ref<yam2d::GameObject>> walls;
     float m_zoom;
 };
 

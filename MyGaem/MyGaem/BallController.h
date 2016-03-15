@@ -17,7 +17,7 @@ public:
     // Bind player 
     void bindPlayer(yam2d::GameObject* player){this->player = player; }
 
-    // void handleCollision
+    void handleCollision(yam2d::GameObject* other);
     //void stop(){moving = false;}
 
 
@@ -25,9 +25,9 @@ public:
     const yam2d::GameObject* getGameObject() const { return (const yam2d::GameObject*)getOwner(); }
 
 private:
-    yam2d::vec2 velocity, beginningVelocity;
+    yam2d::vec2 velocity, beginningVelocity, moveSpeed;
     bool moving, gameOver;
-    float dampingFactor, paddleFriction, moveSpeedX, moveSpeedY;
+    float dampingFactor, paddleFriction;
     int lives;
     yam2d::GameObject* player;
 
